@@ -21,5 +21,6 @@ from first_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("app/hello", views.hello)
+    path("app/hello", views.hello),
+    path('app/homework_querysets', views.homework_querysets),
 ]

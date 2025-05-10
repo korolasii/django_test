@@ -8,7 +8,6 @@ class Company(models.Model):
     tax_code = models.CharField(max_length=50)
 
     def save(self, *args, **kwargs):
-        # Забезпечення того, що існує лише один інстанс
         if not self.pk and Company.objects.exists():
             raise ValidationError('There can be only one Company instance.')
         return super(Company, self).save(*args, **kwargs)
