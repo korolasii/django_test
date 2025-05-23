@@ -1,10 +1,12 @@
 from django.db import models
-from .department import Department
 
 class Position(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
+    is_manager = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
-    department = models.ForeignKey(Department, related_name='position', on_delete=models.CASCADE)
+    department = models.ForeignKey("Department", on_delete=models.CASCADE)
+    monthly_rate = models.IntegerField(default=0)
+
 
     def __str__(self):
-        return f"{self.title} ({self.department.name})"
+        return f"{self.title} ({self.department})"
